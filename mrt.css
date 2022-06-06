@@ -1,0 +1,265 @@
+body {
+    background-color: #d1f786;
+    color: black;
+    font-family: 'Franklin Gothic';
+    margin: 16pt;
+    font-size: 16px;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: darkslategrey;
+}
+ 
+/*Lines*/
+#lines {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#lines button {
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+
+/*Table*/
+
+#dt {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tr {
+    height: 40px;
+}
+
+td {
+    text-align: center;
+}
+
+#tripControl{
+    width: 15%;
+    margin: 0 auto;
+}
+
+#tripControl button {
+    border-width: 4px;
+    padding: 0px;
+    font-weight: bold;
+    border-radius: 5px;
+    /*border: 2px solid #cccccc;*/
+}
+
+.calcFares {
+    margin-top: 2px;
+    background-color: #97f0da;
+    color: #3d544e;
+    font-weight: bolder;
+    font-size: 14px;
+    height: 30px;
+    width: 80px;
+    border-color: #dbdbdb;
+    border-radius: 3px;
+}
+
+#calcTotal {
+    margin-top: 2px;
+    background-color: #95cfac;
+    color: #3d544e;
+    font-weight: bolder;
+    font-size: 14px;
+    height: 30px;
+    width: 80px;
+    border-color: #dbdbdb;
+    border-radius: 3px;
+}
+
+/*Bottom*/
+#bottom {
+    margin-top: 0px;
+    padding: 5%;
+    text-align: center;
+    width: 90%;
+}
+
+#totalCalc, #totalOutput {
+    margin-top: 0px;
+    display: inline-block;
+    padding: 2%;
+}
+
+#msg {
+    color: #31137d;
+    background-color: #ffa01c;
+}
+
+/*Notice*/
+
+ul {
+    line-height: 220%;
+    list-style-type: disc;
+}
+
+li:hover {
+    background-color: #e0bad8;
+}
+
+a:hover {
+    background-color:#6beef2 
+}
+
+/*#bottom {
+    width: 30%;
+    margin: 0 auto;
+}
+
+#totalCalc {
+    float: left;
+    width: 20%;
+    margin-top: 25px;
+    font-size: 18pt;
+}
+
+#totalOutput {
+    float: right;
+    line-height: 20px;
+    width: 50%;
+    font-size: 14pt;
+}*/
+
+/*Round Trip*/
+.roundUser + label {
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+}
+
+.roundUser {
+    display: none;
+}
+
+.roundUser + label:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.1em;
+    padding-bottom: 0.3em;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
+    background-color: #ffffff;
+    transition: .2s;
+}
+
+.roundUser + label:active:before {
+    transform: scale(0);
+}
+
+.roundUser:checked + label:before {
+    background-color: #4cb074;
+    border-color: #4cb074;
+    color: #fff;
+}
+
+/*Dropdown Lists*/
+select {
+    text-align-last: center;
+}
+
+option {
+    zoom: 1.05;
+}
+
+/*Frequency*/
+.freqUser {
+    padding: 6px 10px;
+    cursor: pointer;
+    border: 2px solid #dedede;
+    border-radius: 5px;
+}
+
+.weekf {
+    background-color: #acc8e8;
+}
+
+.monf {
+    background-color: #c5afdb;
+}
+
+/*Types*/
+.typeUser {
+    padding: 6px 10px;
+    cursor: pointer;
+    border: 2px solid #dedede;
+    border-radius: 5px;
+}
+
+.typef {
+    background-color: #81deb2;
+}
+
+.types {
+    background-color: #85c5d6;
+}
+
+.typet {
+    background-color: #faaf6e;
+}
+
+/*Stations*/
+.startUser, .endUser {
+    text-indent: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    border: 2px solid #dedede;
+    border-radius: 5px;
+}
+
+.O {
+    background-color: #f8b61c;
+    border-color: #f8b61c;
+}
+
+.BR {
+    background-color: #c48c31;
+    border-color: #c48c31;
+}
+
+.R {
+    background-color: #e3002c;
+    border-color: #e3002c;
+    color: #ffffff;
+}
+
+.G {
+    background-color: #008659;
+    border-color: #008659;
+    color: #ffffff;
+}
+
+.BL {
+    background-color: #0070bd;
+    border-color: #0070bd;
+    color: #ffffff;
+}
+
+.Y {
+    background-color: #ffdb00;
+    border-color: #ffdb00;
+}
+
+
