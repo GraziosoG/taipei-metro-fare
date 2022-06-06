@@ -18,59 +18,59 @@ var allstops = ["BR01", "BR02", "BR03", "BR04", "BR05", "BR06", "BR07", "BR08", 
     "Y15", "Y16", "Y17", "Y18", "Y19", "Y20"]
 
 var stationCodes = {
-    'BR01': '°Êª«¶é', 'BR02': '¤ì¬]', 'BR03': '¸UªÚªÀ°Ï', 'BR04': '¸UªÚÂå°|',
-    'BR05': '¨¯¥è', 'BR06': 'Åï¥ú', 'BR07': '¤»±i²p', 'BR08': '¬ì§Þ¤j¼Ó', 'BR09': '¤j¦w',
-    'BR10': '©¾§µ´_¿³', 'BR11': '«n¨Ê´_¿³', 'BR12': '¤¤¤s°ê¤¤', 'BR13': 'ªQ¤s¾÷³õ', 'BR14': '¤jª½',
-    'BR15': '¼C«n¸ô', 'BR16': '¦è´ò', 'BR17': '´äáY', 'BR18': '¤å¼w', 'BR19': '¤º´ò',
-    'BR20': '¤j´ò¤½¶é', 'BR21': '¸¬¬w', 'BR22': 'ªF´ò', 'BR23': '«n´ä³nÅé¶é°Ï', 'BR24': '«n´ä®iÄýÀ]',
-    'R02': '¶H¤s', 'R03': '¥x¥_101/¥@¶T', 'R04': '«H¸q¦w©M', 'R05': '¤j¦w', 'R06': '¤j¦w´ËªL¤½¶é',
-    'R07': 'ªFªù', 'R08': '¤¤¥¿¬ö©À°ó', 'R09': '¥x¤jÂå°|', 'R10': '¥x¥_¨®¯¸', 'R11': '¤¤¤s',
-    'R12': 'Âù³s', 'R13': '¥ÁÅv¦è¸ô', 'R14': '¶ê¤s', 'R15': '¼C¼æ', 'R16': '¤hªL',
-    'R17': 'ªÛ¤s', 'R18': '©ú¼w', 'R19': '¥ÛµP', 'R20': 'Ô§­ù©¤', 'R21': '©_©¥',
-    'R22': '¥_§ë', 'R22A': '·s¥_§ë', 'R23': '´_¿³±^', 'R24': '©¾¸q', 'R25': 'Ãö´ç',
-    'R26': '¦Ë³ò', 'R27': '¬õ¾ðªL', 'R28': '²H¤ô',
-    'G01': '·s©±', 'G02': '·s©±°Ï¤½©Ò', 'G03': '¤C±i', 'G03A': '¤pºÑ¼æ', 'G04': '¤j©WªL',
-    'G05': '´º¬ü', 'G06': '¸U¶©', 'G07': '¤½À]', 'G08': '¥x¹q¤j¼Ó', 'G09': '¥j«F',
-    'G10': '¤¤¥¿¬ö©À°ó', 'G11': '¤p«nªù', 'G12': '¦èªù', 'G13': '¥_ªù', 'G14': '¤¤¤s',
-    'G15': 'ªQ¦¿«n¨Ê', 'G16': '«n¨Ê´_¿³', 'G17': '¥x¥_¤p¥¨³J', 'G18': '«n¨Ê¤T¥Á', 'G19': 'ªQ¤s',
-    'O01': '«n¶Õ¨¤', 'O02': '´º¦w', 'O03': '¥Ã¦w¥«³õ', 'O04': '³»·Ë', 'O05': '¥j«F',
-    'O06': 'ªFªù', 'O07': '©¾§µ·s¥Í', 'O08': 'ªQ¦¿«n¨Ê', 'O09': '¦æ¤Ñ®c', 'O10': '¤¤¤s°ê¤p',
-    'O11': '¥ÁÅv¦è¸ô', 'O12': '¤j¾ôÀY', 'O13': '¥x¥_¾ô', 'O14': 'µæ¼d', 'O15': '¤T­«',
-    'O16': '¥ý¶Þ®c', 'O17': 'ÀY«eÉÜ', 'O18': '·s²ø', 'O19': '»²¤j', 'O20': '¤¦»ñ',
-    'O21': '°jÀs', 'O50': '¤T­«°ê¤p', 'O51': '¤T©M°ê¤¤', 'O52': '®}¶×¤¤¾Ç', 'O53': '¤T¥Á°ª¤¤',
-    'O54': 'Äª¬w',
-    'BL01': '³»®H', 'BL02': '¥Ã¹ç', 'BL03': '¤g«°', 'BL04': '®ü¤s', 'BL05': '¨ÈªFÂå°|',
-    'BL06': '©²¤¤', 'BL07': 'ªO¾ô', 'BL08': '·s®H', 'BL09': '¦¿¤l»A', 'BL10': 'Às¤s¦x',
-    'BL11': '¦èªù', 'BL12': '¥x¥_¨®¯¸', 'BL13': 'µ½¾É¦x', 'BL14': '©¾§µ·s¥Í', 'BL15': '©¾§µ´_¿³',
-    'BL16': '©¾§µ´°¤Æ', 'BL17': '°ê¤÷¬ö©ÀÀ]', 'BL18': '¥«¬F©²', 'BL19': '¥Ã¬K', 'BL20': '«á¤s°ñ',
-    'BL21': '©ø¶§', 'BL22': '«n´ä', 'BL23': '«n´ä®iÄýÀ]',
-    'Y07': '¤j©WªL', 'Y08': '¤Q¥|±i', 'Y09': '¨q®Ô¾ô', 'Y10': '´º¥­',
-    'Y11': '´º¦w', 'Y12': '¤¤©M', 'Y13': '¾ô©M', 'Y14': '¤¤­ì', 'Y15': 'ªO·s',
-    'Y16': 'ªO¾ô', 'Y17': '·s®H¥Á¥Í', 'Y18': 'ÀY«eÉÜ', 'Y19': '©¯ºÖ', 'Y20': '·s¥_²£·~¶é°Ï'
+    'BR01': 'å‹•ç‰©åœ’', 'BR02': 'æœ¨æŸµ', 'BR03': 'è¬èŠ³ç¤¾å€', 'BR04': 'è¬èŠ³é†«é™¢',
+    'BR05': 'è¾›äº¥', 'BR06': 'éºŸå…‰', 'BR07': 'å…­å¼µçŠ', 'BR08': 'ç§‘æŠ€å¤§æ¨“', 'BR09': 'å¤§å®‰',
+    'BR10': 'å¿ å­å¾©èˆˆ', 'BR11': 'å—äº¬å¾©èˆˆ', 'BR12': 'ä¸­å±±åœ‹ä¸­', 'BR13': 'æ¾å±±æ©Ÿå ´', 'BR14': 'å¤§ç›´',
+    'BR15': 'åŠå—è·¯', 'BR16': 'è¥¿æ¹–', 'BR17': 'æ¸¯å¢˜', 'BR18': 'æ–‡å¾·', 'BR19': 'å…§æ¹–',
+    'BR20': 'å¤§æ¹–å…¬åœ’', 'BR21': 'è‘«æ´²', 'BR22': 'æ±æ¹–', 'BR23': 'å—æ¸¯è»Ÿé«”åœ’å€', 'BR24': 'å—æ¸¯å±•è¦½é¤¨',
+    'R02': 'è±¡å±±', 'R03': 'å°åŒ—101/ä¸–è²¿', 'R04': 'ä¿¡ç¾©å®‰å’Œ', 'R05': 'å¤§å®‰', 'R06': 'å¤§å®‰æ£®æž—å…¬åœ’',
+    'R07': 'æ±é–€', 'R08': 'ä¸­æ­£ç´€å¿µå ‚', 'R09': 'å°å¤§é†«é™¢', 'R10': 'å°åŒ—è»Šç«™', 'R11': 'ä¸­å±±',
+    'R12': 'é›™é€£', 'R13': 'æ°‘æ¬Šè¥¿è·¯', 'R14': 'åœ“å±±', 'R15': 'åŠæ½­', 'R16': 'å£«æž—',
+    'R17': 'èŠå±±', 'R18': 'æ˜Žå¾·', 'R19': 'çŸ³ç‰Œ', 'R20': 'å”­å“©å²¸', 'R21': 'å¥‡å²©',
+    'R22': 'åŒ—æŠ•', 'R22A': 'æ–°åŒ—æŠ•', 'R23': 'å¾©èˆˆå´—', 'R24': 'å¿ ç¾©', 'R25': 'é—œæ¸¡',
+    'R26': 'ç«¹åœ', 'R27': 'ç´…æ¨¹æž—', 'R28': 'æ·¡æ°´',
+    'G01': 'æ–°åº—', 'G02': 'æ–°åº—å€å…¬æ‰€', 'G03': 'ä¸ƒå¼µ', 'G03A': 'å°ç¢§æ½­', 'G04': 'å¤§åªæž—',
+    'G05': 'æ™¯ç¾Ž', 'G06': 'è¬éš†', 'G07': 'å…¬é¤¨', 'G08': 'å°é›»å¤§æ¨“', 'G09': 'å¤äº­',
+    'G10': 'ä¸­æ­£ç´€å¿µå ‚', 'G11': 'å°å—é–€', 'G12': 'è¥¿é–€', 'G13': 'åŒ—é–€', 'G14': 'ä¸­å±±',
+    'G15': 'æ¾æ±Ÿå—äº¬', 'G16': 'å—äº¬å¾©èˆˆ', 'G17': 'å°åŒ—å°å·¨è›‹', 'G18': 'å—äº¬ä¸‰æ°‘', 'G19': 'æ¾å±±',
+    'O01': 'å—å‹¢è§’', 'O02': 'æ™¯å®‰', 'O03': 'æ°¸å®‰å¸‚å ´', 'O04': 'é ‚æºª', 'O05': 'å¤äº­',
+    'O06': 'æ±é–€', 'O07': 'å¿ å­æ–°ç”Ÿ', 'O08': 'æ¾æ±Ÿå—äº¬', 'O09': 'è¡Œå¤©å®®', 'O10': 'ä¸­å±±åœ‹å°',
+    'O11': 'æ°‘æ¬Šè¥¿è·¯', 'O12': 'å¤§æ©‹é ­', 'O13': 'å°åŒ—æ©‹', 'O14': 'èœå¯®', 'O15': 'ä¸‰é‡',
+    'O16': 'å…ˆå—‡å®®', 'O17': 'é ­å‰åº„', 'O18': 'æ–°èŽŠ', 'O19': 'è¼”å¤§', 'O20': 'ä¸¹é³³',
+    'O21': 'è¿´é¾', 'O50': 'ä¸‰é‡åœ‹å°', 'O51': 'ä¸‰å’Œåœ‹ä¸­', 'O52': 'å¾åŒ¯ä¸­å­¸', 'O53': 'ä¸‰æ°‘é«˜ä¸­',
+    'O54': 'è˜†æ´²',
+    'BL01': 'é ‚åŸ”', 'BL02': 'æ°¸å¯§', 'BL03': 'åœŸåŸŽ', 'BL04': 'æµ·å±±', 'BL05': 'äºžæ±é†«é™¢',
+    'BL06': 'åºœä¸­', 'BL07': 'æ¿æ©‹', 'BL08': 'æ–°åŸ”', 'BL09': 'æ±Ÿå­ç¿ ', 'BL10': 'é¾å±±å¯º',
+    'BL11': 'è¥¿é–€', 'BL12': 'å°åŒ—è»Šç«™', 'BL13': 'å–„å°Žå¯º', 'BL14': 'å¿ å­æ–°ç”Ÿ', 'BL15': 'å¿ å­å¾©èˆˆ',
+    'BL16': 'å¿ å­æ•¦åŒ–', 'BL17': 'åœ‹çˆ¶ç´€å¿µé¤¨', 'BL18': 'å¸‚æ”¿åºœ', 'BL19': 'æ°¸æ˜¥', 'BL20': 'å¾Œå±±åŸ¤',
+    'BL21': 'æ˜†é™½', 'BL22': 'å—æ¸¯', 'BL23': 'å—æ¸¯å±•è¦½é¤¨',
+    'Y07': 'å¤§åªæž—', 'Y08': 'åå››å¼µ', 'Y09': 'ç§€æœ—æ©‹', 'Y10': 'æ™¯å¹³',
+    'Y11': 'æ™¯å®‰', 'Y12': 'ä¸­å’Œ', 'Y13': 'æ©‹å’Œ', 'Y14': 'ä¸­åŽŸ', 'Y15': 'æ¿æ–°',
+    'Y16': 'æ¿æ©‹', 'Y17': 'æ–°åŸ”æ°‘ç”Ÿ', 'Y18': 'é ­å‰åº„', 'Y19': 'å¹¸ç¦', 'Y20': 'æ–°åŒ—ç”¢æ¥­åœ’å€'
 }
 
 var stationsNames = {
-    '°Êª«¶é': 'BR01', '¤ì¬]': 'BR02', '¸UªÚªÀ°Ï': 'BR03', '¸UªÚÂå°|': 'BR04',
-    '¨¯¥è': 'BR05', 'Åï¥ú': 'BR06', '¤»±i²p': 'BR07', '¬ì§Þ¤j¼Ó': 'BR08', '¤j¦w': 'R05',
-    '©¾§µ´_¿³': 'BL15', '«n¨Ê´_¿³': 'G16', '¤¤¤s°ê¤¤': 'BR12', 'ªQ¤s¾÷³õ': 'BR13', '¤jª½': 'BR14',
-    '¼C«n¸ô': 'BR15', '¦è´ò': 'BR16', '´äáY': 'BR17', '¤å¼w': 'BR18', '¤º´ò': 'BR19', '¤j´ò¤½¶é': 'BR20',
-    '¸¬¬w': 'BR21', 'ªF´ò': 'BR22', '«n´ä³nÅé¶é°Ï': 'BR23', '«n´ä®iÄýÀ]': 'BL23', '¶H¤s': 'R02',
-    '¥x¥_101/¥@¶T': 'R03', '«H¸q¦w©M': 'R04', '¤j¦w´ËªL¤½¶é': 'R06', 'ªFªù': 'O06', '¤¤¥¿¬ö©À°ó': 'G10',
-    '¥x¤jÂå°|': 'R09', '¥x¥_¨®¯¸': 'BL12', '¤¤¤s': 'G14', 'Âù³s': 'R12', '¥ÁÅv¦è¸ô': 'O11', '¶ê¤s': 'R14',
-    '¼C¼æ': 'R15', '¤hªL': 'R16', 'ªÛ¤s': 'R17', '©ú¼w': 'R18', '¥ÛµP': 'R19', 'Ô§­ù©¤': 'R20',
-    '©_©¥': 'R21', '¥_§ë': 'R22', '·s¥_§ë': 'R22A', '´_¿³±^': 'R23', '©¾¸q': 'R24', 'Ãö´ç': 'R25',
-    '¦Ë³ò': 'R26', '¬õ¾ðªL': 'R27', '²H¤ô': 'R28', '·s©±': 'G01', '·s©±°Ï¤½©Ò': 'G02', '¤C±i': 'G03',
-    '¤pºÑ¼æ': 'G03A', '¤j©WªL': 'Y07', '´º¬ü': 'G05', '¸U¶©': 'G06', '¤½À]': 'G07', '¥x¹q¤j¼Ó': 'G08',
-    '¥j«F': 'O05', '¤p«nªù': 'G11', '¦èªù': 'BL11', '¥_ªù': 'G13', 'ªQ¦¿«n¨Ê': 'O08', '¥x¥_¤p¥¨³J': 'G17',
-    '«n¨Ê¤T¥Á': 'G18', 'ªQ¤s': 'G19', '«n¶Õ¨¤': 'O01', '´º¦w': 'Y11', '¥Ã¦w¥«³õ': 'O03', '³»·Ë': 'O04',
-    '©¾§µ·s¥Í': 'BL14', '¦æ¤Ñ®c': 'O09', '¤¤¤s°ê¤p': 'O10', '¤j¾ôÀY': 'O12', '¥x¥_¾ô': 'O13', 'µæ¼d': 'O14',
-    '¤T­«': 'O15', '¥ý¶Þ®c': 'O16', 'ÀY«eÉÜ': 'Y18', '·s²ø': 'O18', '»²¤j': 'O19', '¤¦»ñ': 'O20', '°jÀs': 'O21',
-    '¤T­«°ê¤p': 'O50', '¤T©M°ê¤¤': 'O51', '®}¶×¤¤¾Ç': 'O52', '¤T¥Á°ª¤¤': 'O53', 'Äª¬w': 'O54', '³»®H': 'BL01',
-    '¥Ã¹ç': 'BL02', '¤g«°': 'BL03', '®ü¤s': 'BL04', '¨ÈªFÂå°|': 'BL05', '©²¤¤': 'BL06', 'ªO¾ô': 'Y16',
-    '·s®H': 'BL08', '¦¿¤l»A': 'BL09', 'Às¤s¦x': 'BL10', 'µ½¾É¦x': 'BL13', '©¾§µ´°¤Æ': 'BL16', '°ê¤÷¬ö©ÀÀ]': 'BL17',
-    '¥«¬F©²': 'BL18', '¥Ã¬K': 'BL19', '«á¤s°ñ': 'BL20', '©ø¶§': 'BL21', '«n´ä': 'BL22', '¤Q¥|±i': 'Y08',
-    '¨q®Ô¾ô': 'Y09', '´º¥­': 'Y10', '¤¤©M': 'Y12', '¾ô©M': 'Y13', '¤¤­ì': 'Y14', 'ªO·s': 'Y15',
-    '·s®H¥Á¥Í': 'Y17', '©¯ºÖ': 'Y19', '·s¥_²£·~¶é°Ï': 'Y20'
+    'å‹•ç‰©åœ’': 'BR01', 'æœ¨æŸµ': 'BR02', 'è¬èŠ³ç¤¾å€': 'BR03', 'è¬èŠ³é†«é™¢': 'BR04',
+    'è¾›äº¥': 'BR05', 'éºŸå…‰': 'BR06', 'å…­å¼µçŠ': 'BR07', 'ç§‘æŠ€å¤§æ¨“': 'BR08', 'å¤§å®‰': 'R05',
+    'å¿ å­å¾©èˆˆ': 'BL15', 'å—äº¬å¾©èˆˆ': 'G16', 'ä¸­å±±åœ‹ä¸­': 'BR12', 'æ¾å±±æ©Ÿå ´': 'BR13', 'å¤§ç›´': 'BR14',
+    'åŠå—è·¯': 'BR15', 'è¥¿æ¹–': 'BR16', 'æ¸¯å¢˜': 'BR17', 'æ–‡å¾·': 'BR18', 'å…§æ¹–': 'BR19', 'å¤§æ¹–å…¬åœ’': 'BR20',
+    'è‘«æ´²': 'BR21', 'æ±æ¹–': 'BR22', 'å—æ¸¯è»Ÿé«”åœ’å€': 'BR23', 'å—æ¸¯å±•è¦½é¤¨': 'BL23', 'è±¡å±±': 'R02',
+    'å°åŒ—101/ä¸–è²¿': 'R03', 'ä¿¡ç¾©å®‰å’Œ': 'R04', 'å¤§å®‰æ£®æž—å…¬åœ’': 'R06', 'æ±é–€': 'O06', 'ä¸­æ­£ç´€å¿µå ‚': 'G10',
+    'å°å¤§é†«é™¢': 'R09', 'å°åŒ—è»Šç«™': 'BL12', 'ä¸­å±±': 'G14', 'é›™é€£': 'R12', 'æ°‘æ¬Šè¥¿è·¯': 'O11', 'åœ“å±±': 'R14',
+    'åŠæ½­': 'R15', 'å£«æž—': 'R16', 'èŠå±±': 'R17', 'æ˜Žå¾·': 'R18', 'çŸ³ç‰Œ': 'R19', 'å”­å“©å²¸': 'R20',
+    'å¥‡å²©': 'R21', 'åŒ—æŠ•': 'R22', 'æ–°åŒ—æŠ•': 'R22A', 'å¾©èˆˆå´—': 'R23', 'å¿ ç¾©': 'R24', 'é—œæ¸¡': 'R25',
+    'ç«¹åœ': 'R26', 'ç´…æ¨¹æž—': 'R27', 'æ·¡æ°´': 'R28', 'æ–°åº—': 'G01', 'æ–°åº—å€å…¬æ‰€': 'G02', 'ä¸ƒå¼µ': 'G03',
+    'å°ç¢§æ½­': 'G03A', 'å¤§åªæž—': 'Y07', 'æ™¯ç¾Ž': 'G05', 'è¬éš†': 'G06', 'å…¬é¤¨': 'G07', 'å°é›»å¤§æ¨“': 'G08',
+    'å¤äº­': 'O05', 'å°å—é–€': 'G11', 'è¥¿é–€': 'BL11', 'åŒ—é–€': 'G13', 'æ¾æ±Ÿå—äº¬': 'O08', 'å°åŒ—å°å·¨è›‹': 'G17',
+    'å—äº¬ä¸‰æ°‘': 'G18', 'æ¾å±±': 'G19', 'å—å‹¢è§’': 'O01', 'æ™¯å®‰': 'Y11', 'æ°¸å®‰å¸‚å ´': 'O03', 'é ‚æºª': 'O04',
+    'å¿ å­æ–°ç”Ÿ': 'BL14', 'è¡Œå¤©å®®': 'O09', 'ä¸­å±±åœ‹å°': 'O10', 'å¤§æ©‹é ­': 'O12', 'å°åŒ—æ©‹': 'O13', 'èœå¯®': 'O14',
+    'ä¸‰é‡': 'O15', 'å…ˆå—‡å®®': 'O16', 'é ­å‰åº„': 'Y18', 'æ–°èŽŠ': 'O18', 'è¼”å¤§': 'O19', 'ä¸¹é³³': 'O20', 'è¿´é¾': 'O21',
+    'ä¸‰é‡åœ‹å°': 'O50', 'ä¸‰å’Œåœ‹ä¸­': 'O51', 'å¾åŒ¯ä¸­å­¸': 'O52', 'ä¸‰æ°‘é«˜ä¸­': 'O53', 'è˜†æ´²': 'O54', 'é ‚åŸ”': 'BL01',
+    'æ°¸å¯§': 'BL02', 'åœŸåŸŽ': 'BL03', 'æµ·å±±': 'BL04', 'äºžæ±é†«é™¢': 'BL05', 'åºœä¸­': 'BL06', 'æ¿æ©‹': 'Y16',
+    'æ–°åŸ”': 'BL08', 'æ±Ÿå­ç¿ ': 'BL09', 'é¾å±±å¯º': 'BL10', 'å–„å°Žå¯º': 'BL13', 'å¿ å­æ•¦åŒ–': 'BL16', 'åœ‹çˆ¶ç´€å¿µé¤¨': 'BL17',
+    'å¸‚æ”¿åºœ': 'BL18', 'æ°¸æ˜¥': 'BL19', 'å¾Œå±±åŸ¤': 'BL20', 'æ˜†é™½': 'BL21', 'å—æ¸¯': 'BL22', 'åå››å¼µ': 'Y08',
+    'ç§€æœ—æ©‹': 'Y09', 'æ™¯å¹³': 'Y10', 'ä¸­å’Œ': 'Y12', 'æ©‹å’Œ': 'Y13', 'ä¸­åŽŸ': 'Y14', 'æ¿æ–°': 'Y15',
+    'æ–°åŸ”æ°‘ç”Ÿ': 'Y17', 'å¹¸ç¦': 'Y19', 'æ–°åŒ—ç”¢æ¥­åœ’å€': 'Y20'
 }
 function generateStops() {
     allOptions = "";
@@ -89,7 +89,7 @@ function generateStops() {
 }
 
 function generateStopsOptions(lineName, stopNum, stopName) {
-    //<option class="o" value="O16">O16 ¥ý¶Þ®c¯¸</option>
+    //<option class="o" value="O16">O16 å…ˆå—‡å®®ç«™</option>
     return '<option class="' + lineName + '" value="' + stopNum + '">' + stopNum + ' ' + stopName + '</option>'
 }
 
@@ -113,7 +113,7 @@ async function calcFares(cid) { //return the number of trips for that row
     sind = allstops.indexOf(sloc);
     eind = allstops.indexOf(eloc);
     if ((sind === -1) | (eind === -1)) {
-        alert("½Ð¦b²Ä" + rowNum + "¦æ¿ï¾Ü°_°W¯¸©M²×ÂI¯¸");
+        alert("è«‹åœ¨ç¬¬" + rowNum + "è¡Œé¸æ“‡èµ·è¨–ç«™å’Œçµ‚é»žç«™");
         return (-1, 0);
     };
     if (type === "taipeichild") {
@@ -128,7 +128,7 @@ async function calcFares(cid) { //return the number of trips for that row
             farePer = parseInt(jsf["Fare"][fareName]);
             var factor = 1;
             if ((sloc === eloc) | (farePer === 0)) {
-                alert("²Ä" + rowNum + "¦æ¤§°_°W¯¸©M²×ÂI¯¸¤@­P¡A¨®¸ê¤Î·f­¼¦¸¼Æ±N¥H0­pºâ¡A½Ð½T»{¿é¤JµL»~");
+                alert("ç¬¬" + rowNum + "è¡Œä¹‹èµ·è¨–ç«™å’Œçµ‚é»žç«™ä¸€è‡´ï¼Œè»Šè³‡åŠæ­ä¹˜æ¬¡æ•¸å°‡ä»¥0è¨ˆç®—ï¼Œè«‹ç¢ºèªè¼¸å…¥ç„¡èª¤");
                 document.getElementById("farePerRound" + rowNum).innerHTML = "$ " + farePer;
                 document.getElementById("itemCost" + rowNum).innerHTML = "$ " + (farePer * factor);
                 return (0, 0);
@@ -159,29 +159,29 @@ async function calcTotal() {
         eachFactor = calced[0]
         eachFarePer = calced[1];
         if (eachFactor === -1) {
-            alert("¥[Á`«e½Ð½T»{©Ò¦³®Èµ{¬Ò¤w¶ñ¼g§¹¦¨");
-            document.getElementById("trips").innerHTML = "²Ö­p·f­¼¦¸¼Æ¡G";
-            document.getElementById("ovlCost").innerHTML = "Á`ªá¶O¡G";
-            document.getElementById("msg").innerHTML = "1280©w´Á²¼";
+            alert("åŠ ç¸½å‰è«‹ç¢ºèªæ‰€æœ‰æ—…ç¨‹çš†å·²å¡«å¯«å®Œæˆ");
+            document.getElementById("trips").innerHTML = "ç´¯è¨ˆæ­ä¹˜æ¬¡æ•¸ï¼š";
+            document.getElementById("ovlCost").innerHTML = "ç¸½èŠ±è²»ï¼š";
+            document.getElementById("msg").innerHTML = "1280å®šæœŸç¥¨";
             return;
         };
         tfactor += eachFactor;
         tfare += eachFactor * eachFarePer;
     }
-    document.getElementById("trips").innerHTML = "²Ö­p·f­¼¦¸¼Æ¡G " + tfactor;
+    document.getElementById("trips").innerHTML = "ç´¯è¨ˆæ­ä¹˜æ¬¡æ•¸ï¼š " + tfactor;
     discountFactor = applyDiscount(tfactor);
     if (discountFactor === 0) {
-        document.getElementById("ovlCost").innerHTML = '¥¼¹F¦©°£<a href="https://www.metro.taipei/cp.aspx?n=AB56163F79ECB2C2" target="_blank">¦^õXª÷</a>¤§ªùÂe¡AÁ`ªá¶O¡G $ ' + tfare;
+        document.getElementById("ovlCost").innerHTML = 'æœªé”æ‰£é™¤<a href="https://www.metro.taipei/cp.aspx?n=AB56163F79ECB2C2" target="_blank">å›žé¥‹é‡‘</a>ä¹‹é–€æª»ï¼Œç¸½èŠ±è²»ï¼š $ ' + tfare;
     } else {
         savings = Math.round(tfare * discountFactor);
         tfare = Math.round(tfare * (1 - discountFactor));
-        document.getElementById("ovlCost").innerHTML = '¦©°£ $ ' + savings + '¤§<a href="https://www.metro.taipei/cp.aspx?n=AB56163F79ECB2C2" target="_blank">¦^õXª÷</a>«á¡AÁ`ªá¶O¡G $ ' + tfare;
+        document.getElementById("ovlCost").innerHTML = 'æ‰£é™¤ $ ' + savings + 'ä¹‹<a href="https://www.metro.taipei/cp.aspx?n=AB56163F79ECB2C2" target="_blank">å›žé¥‹é‡‘</a>å¾Œï¼Œç¸½èŠ±è²»ï¼š $ ' + tfare;
     }
     if (tfare >= 1180) {
-        document.getElementById("msg").innerHTML = "1280©w´Á²¼­È±o¦Ò¼{¡I";
+        document.getElementById("msg").innerHTML = "1280å®šæœŸç¥¨å€¼å¾—è€ƒæ…®ï¼";
     }
     else {
-        document.getElementById("msg").innerHTML = "1280©w´Á²¼¦ü¥G¤£¤Ó¦Eºâ¡I";
+        document.getElementById("msg").innerHTML = "1280å®šæœŸç¥¨ä¼¼ä¹Žä¸å¤ªåˆ’ç®—ï¼";
     }
 }
 
@@ -213,12 +213,12 @@ function addTrip() {
     var cell6 = row.insertCell(5);
     var cell7 = row.insertCell(6);
     var cell8 = row.insertCell(7);
-    cell1.innerHTML = '<label for="startUser' + curRow + '"></label><select class="startUser" id="startUser' + curRow + '"><option value="" selected disabled hidden>¡Z¡Z ½Ð¿ï¾Ü ¡Z¡Z</option>' + allOptions;
-    cell2.innerHTML = '<label for="endUser' + curRow + '"></label><select class="endUser" id="endUser' + curRow + '"><option value="" selected disabled hidden>¡Z¡Z ½Ð¿ï¾Ü ¡Z¡Z</option>' + allOptions;
-    cell3.innerHTML = '<label for="freqUser' + curRow + '"></label><select class="freqUser" id="freqUser' + curRow + '"><option value="1m" class="monf">¨C¤ë1¦¸</option><option value="2m" class="monf">¨C¤ë2¦¸</option><option value="3m" class="monf">¨C¤ë3¦¸</option><option value="4m" class="monf">¨C¤ë4¦¸</option><option value="1w" class="weekf">¨C¶g1¦¸</option><option value="2w" class="weekf">¨C¶g2¦¸</option><option value="3w" class="weekf">¨C¶g3¦¸</option><option value="4w" class="weekf">¨C¶g4¦¸</option><option value="5w" class="weekf">¨C¶g5¦¸</option><option value="6w" class="weekf">¨C¶g6¦¸</option><option value="7w" class="weekf">¨C¶g7¦¸</option></select>';
-    cell4.innerHTML = '<input type="checkbox" class="roundUser" id="roundUser' + curRow + '" value="Yes" /><label for="roundUser' + curRow + '">¬O</label></div>';
-    cell5.innerHTML = '<label for="typeUser' + curRow + '"></label><select class="typeUser" id="typeUser' + curRow + '"><option value="adult" class="typef">¥þ²¼</option><option value="senior" class="types">·q¦Ñ¥d</option><option value="charity" class="types">·R¤ß¥d</option><option value="companion" class="types">·R¤ß³­¦ñ¥d</option><option value="newtaipeichild" class="types">·s¥_¥«¨àµ£Àu´f²¼</option><option value="taipeichild" class="typet">»O¥_¥«¨àµ£Àu´f²¼</option></select>';
-    cell6.innerHTML = '<label for="calcUser' + curRow + '"><input type = "button" value = "¤p­p" class="calcFares" id = "calcUser' + curRow + '" onclick = "calcFares(this.id)" /></label >';
+    cell1.innerHTML = '<label for="startUser' + curRow + '"></label><select class="startUser" id="startUser' + curRow + '"><option value="" selected disabled hidden>â•´â•´ è«‹é¸æ“‡ â•´â•´</option>' + allOptions;
+    cell2.innerHTML = '<label for="endUser' + curRow + '"></label><select class="endUser" id="endUser' + curRow + '"><option value="" selected disabled hidden>â•´â•´ è«‹é¸æ“‡ â•´â•´</option>' + allOptions;
+    cell3.innerHTML = '<label for="freqUser' + curRow + '"></label><select class="freqUser" id="freqUser' + curRow + '"><option value="1m" class="monf">æ¯æœˆ1æ¬¡</option><option value="2m" class="monf">æ¯æœˆ2æ¬¡</option><option value="3m" class="monf">æ¯æœˆ3æ¬¡</option><option value="4m" class="monf">æ¯æœˆ4æ¬¡</option><option value="1w" class="weekf">æ¯é€±1æ¬¡</option><option value="2w" class="weekf">æ¯é€±2æ¬¡</option><option value="3w" class="weekf">æ¯é€±3æ¬¡</option><option value="4w" class="weekf">æ¯é€±4æ¬¡</option><option value="5w" class="weekf">æ¯é€±5æ¬¡</option><option value="6w" class="weekf">æ¯é€±6æ¬¡</option><option value="7w" class="weekf">æ¯é€±7æ¬¡</option></select>';
+    cell4.innerHTML = '<input type="checkbox" class="roundUser" id="roundUser' + curRow + '" value="Yes" /><label for="roundUser' + curRow + '">æ˜¯</label></div>';
+    cell5.innerHTML = '<label for="typeUser' + curRow + '"></label><select class="typeUser" id="typeUser' + curRow + '"><option value="adult" class="typef">å…¨ç¥¨</option><option value="senior" class="types">æ•¬è€å¡</option><option value="charity" class="types">æ„›å¿ƒå¡</option><option value="companion" class="types">æ„›å¿ƒé™ªä¼´å¡</option><option value="newtaipeichild" class="types">æ–°åŒ—å¸‚å…’ç«¥å„ªæƒ ç¥¨</option><option value="taipeichild" class="typet">è‡ºåŒ—å¸‚å…’ç«¥å„ªæƒ ç¥¨</option></select>';
+    cell6.innerHTML = '<label for="calcUser' + curRow + '"><input type = "button" value = "å°è¨ˆ" class="calcFares" id = "calcUser' + curRow + '" onclick = "calcFares(this.id)" /></label >';
     cell7.innerHTML = '<p id="farePerRound' + curRow + '"></p>';
     cell8.innerHTML = '<p id="itemCost' + curRow + '"></p>';
     curRow += 1;
@@ -230,3 +230,4 @@ function delTrip() {
         document.getElementById("dt").deleteRow(curRow);
     }
 }
+
