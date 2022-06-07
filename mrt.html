@@ -7,7 +7,7 @@
 	<meta name="description" content="臺北捷運定期票評估" />
 	<meta name="author" content="Grace Chiu" />
 	<link href="mrt.css" rel="stylesheet">
-	<script type="text/javascript" src="mrt.js" charset="utf-8" defer></script>
+	<script type="text/javascript" src="mrt.js" charset="big5" defer></script>
 </head>
 
 <body onload="generateStops()">
@@ -64,7 +64,7 @@
 				<tr>
 					<td>
 						<label for="startUser1"></label>
-						<select class="startUser" id="startUser1">
+						<select class="startUser" id="startUser1" onchange="clearFares(1)">
 							<option value="" selected disabled hidden>╴╴ 請選擇 ╴╴</option>
 							<option class="BR" value="BR01">BR01 動物園</option>
 							<option class="BR" value="BR02">BR02 木柵</option>
@@ -204,7 +204,7 @@
 					</td>
 					<td>
 						<label for="endUser1"></label>
-						<select class="endUser" id="endUser1">
+						<select class="endUser" id="endUser1" onchange="clearFares(1)">
 							<option value="" selected disabled hidden>╴╴ 請選擇 ╴╴</option>
 							<option class="BR" value="BR01">BR01 動物園</option>
 							<option class="BR" value="BR02">BR02 木柵</option>
@@ -344,7 +344,7 @@
 					</td>
 					<td>
 						<label for="freqUser1"></label>
-						<select class="freqUser" id="freqUser1">
+						<select class="freqUser" id="freqUser1" onchange="clearFares(1)">
 							<option value="1m" class="monf">每月1次</option>
 							<option value="2m" class="monf">每月2次</option>
 							<option value="3m" class="monf">每月3次</option>
@@ -359,12 +359,12 @@
 						</select>
 					</td>
 					<td>
-						<input type="checkbox" class="roundUser" id="roundUser1" value="Yes" />
+						<input type="checkbox" class="roundUser" id="roundUser1" value="Yes" onclick="clearFares(1)"/>
 						<label for="roundUser1">是</label>
 					</td>
 					<td>
 						<label for="typeUser1"></label>
-						<select class="typeUser" id="typeUser1">
+						<select class="typeUser" id="typeUser1" onchange="clearFares(1)">
 							<option value="adult" class="typef">全票</option>
 							<option value="senior" class="types">敬老卡</option>
 							<option value="charity" class="types">愛心卡</option>
