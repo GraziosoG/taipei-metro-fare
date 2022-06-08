@@ -22,20 +22,21 @@
 					並可享臺北市及新北市YouBike站點借車前30分鐘免費優惠(須先註冊)，每次搭乘限一人使用。此工具僅考慮臺北捷運之使用來計算划算度，<b>請斟酌使用</b>。
 				</li>
 				<li>此公式以<b>$1,180</b>為基準點來取得定期票是否值得考慮，但這個基準點因人而異，<b>請斟酌使用</b>。</li>
-				<li>本網站所使用的票價為全票、敬老卡、愛心卡、愛心陪伴卡、新北市兒童優惠票價及臺北市兒童優惠票價。</li>
-				<li>車票票價是從臺北市資料大平臺提供的<a href="https://data.taipei/dataset/detail?id=4acb4911-0360-4063-808d-fcee629508b3" target="_blank"><b>臺北捷運系統票價</b></a>抓取。</li>
+				<li>本網站採用臺北市資料大平臺提供的<a href="https://data.taipei/dataset/detail?id=4acb4911-0360-4063-808d-fcee629508b3" target="_blank"><b>臺北捷運系統票價</b></a>以取得全票、敬老卡、愛心卡、愛心陪伴卡、新北市兒童優惠票價及臺北市兒童優惠票價。</li>
+				<li>若單一旅程中之起訖站和終點站一致，該列之單趟車資和單月車資在此皆已0元計算。但若同站進出超過15分鐘，將會扣除20元<a href="https://www.easycard.com.tw/use?cls=1506497567&id=1506500640#:~:text=%E4%BE%9D%E6%93%9A%E5%8F%B0%E5%8C%97%E5%A4%A7%E7%9C%BE%E6%8D%B7%E9%81%8B,20%E5%85%83%E9%80%BE%E6%99%82%E8%B2%BB%E3%80%82" target="_blank"><b>逾時費</b></a>。<b>此網站不考慮逾時的情況。</b></li>
+				<li>此網站架設每個月有四週，即28天，<b>請斟酌使用</b>。</li>
 			</ul>
 
 			<a href="https://www.metro.taipei/cp.aspx?n=91974F2B13D997F1" target="_blank">臺北捷運官網地圖</a>
 		</div>
 
 		<div id="lines">
-			<button class="BR">文湖線</button>
-			<button class="R">淡水信義線</button>
-			<button class="G">松山新店站</button>
-			<button class="O">中和新蘆線</button>
-			<button class="BL">板南線</button>
-			<button class="Y">環狀線</button>
+			<button class="BR" disabled>文湖線</button>
+			<button class="R" disabled>淡水信義線</button>
+			<button class="G" disabled>松山新店站</button>
+			<button class="O" disabled>中和新蘆線</button>
+			<button class="BL" disabled>板南線</button>
+			<button class="Y" disabled>環狀線</button>
 		</div>
 
 		<table id="dt" style="width: 100%">
@@ -359,7 +360,7 @@
 						</select>
 					</td>
 					<td>
-						<input type="checkbox" class="roundUser" id="roundUser1" value="Yes" onclick="clearFares(1)"/>
+						<input type="checkbox" class="roundUser" id="roundUser1" value="Yes" onclick="clearFares(1)" />
 						<label for="roundUser1">是</label>
 					</td>
 					<td>
@@ -397,7 +398,6 @@
 		</div>
 
 		<br />
-		<br />
 
 		<div id="bottom">
 			<div id="totalCalc">
@@ -411,10 +411,12 @@
 			</div>
 		</div>
 
-		<br />
-		<br />
-		<br />
-		<br />
+		<div id="footer">
+			<footer>
+				<p>開發人員 Grace Chiu · <a href="https://github.com/GraziosoG/taipei-metro-fare">GitHub Repo</a> · <a href="mailto:grace.chiu25@utexas.edu">Contact</a></p>
+			</footer>
+		</div>
+
 	</div>
 
 </body>

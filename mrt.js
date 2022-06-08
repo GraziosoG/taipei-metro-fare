@@ -4,7 +4,7 @@ var allOptions = ""; //store station options for dropdown selection
 
 var curRow = 2; //keep count on adding or deleting trips
 
-var calcBools = [0]; //an array of zeros where 0 is row not calculated yet and 1 is already calculated 
+var calcBools = [-2]; //an array of zeros where 0 is row not calculated yet and 1 is already calculated and -1 is same stop and -2 is empty stop
 
 var allstops = ["BR01", "BR02", "BR03", "BR04", "BR05", "BR06", "BR07", "BR08", "BR09", "BR10",
     "BR11", "BR12", "BR13", "BR14", "BR15", "BR16", "BR17", "BR18", "BR19", "BR20",
@@ -17,7 +17,7 @@ var allstops = ["BR01", "BR02", "BR03", "BR04", "BR05", "BR06", "BR07", "BR08", 
     "O20", "O21", "O50", "O51", "O52", "O53", "O54", "BL01", "BL02", "BL03", "BL04", "BL05", "BL06",
     "BL07", "BL08", "BL09", "BL10", "BL11", "BL12", "BL13", "BL14", "BL15", "BL16", "BL17", "BL18",
     "BL19", "BL20", "BL21", "BL22", "BL23", "Y07", "Y08", "Y09", "Y10", "Y11", "Y12", "Y13", "Y14",
-    "Y15", "Y16", "Y17", "Y18", "Y19", "Y20"]
+    "Y15", "Y16", "Y17", "Y18", "Y19", "Y20"];
 
 var stationCodes = {
     'BR01': '動物園', 'BR02': '木柵', 'BR03': '萬芳社區', 'BR04': '萬芳醫院',
@@ -49,7 +49,7 @@ var stationCodes = {
     'Y07': '大坪林', 'Y08': '十四張', 'Y09': '秀朗橋', 'Y10': '景平',
     'Y11': '景安', 'Y12': '中和', 'Y13': '橋和', 'Y14': '中原', 'Y15': '板新',
     'Y16': '板橋', 'Y17': '新埔民生', 'Y18': '頭前庄', 'Y19': '幸福', 'Y20': '新北產業園區'
-}
+};
 
 var stationsNames = {
     '動物園': 'BR01', '木柵': 'BR02', '萬芳社區': 'BR03', '萬芳醫院': 'BR04',
@@ -73,7 +73,17 @@ var stationsNames = {
     '市政府': 'BL18', '永春': 'BL19', '後山埤': 'BL20', '昆陽': 'BL21', '南港': 'BL22', '十四張': 'Y08',
     '秀朗橋': 'Y09', '景平': 'Y10', '中和': 'Y12', '橋和': 'Y13', '中原': 'Y14', '板新': 'Y15',
     '新埔民生': 'Y17', '幸福': 'Y19', '新北產業園區': 'Y20'
-}
+};
+
+var sameStops = {
+    "O17": "Y18", "Y17": "BL08", "Y16": "BL07", "Y11": "O02", "Y07": "G04", "G09": "O05", "G10": "R08",
+    "G12": "BL11", "G14": "R11", "G15": "O08", "G16": "BR11", "R07": "O06", "R10": "BL12", "R13": "O11",
+    "BL14": "O07", "BL15": "BR10", "BR09": "R05", "BR24": "BL23",
+    "Y18": "O17", "BL08": "Y17", "BL07": "Y16", "O02": "Y11", "G04": "Y07", "O05": "G09", "R08": "G10",
+    "BL11": "G12", "R11": "G14", "O08": "G15", "BR11": "G16", "O06": "R07", "BL12": "R10", "O11": "R13",
+    "O07": "BL14", "BR10": "BL15", "R05": "BR09", "BL23": "BR24",
+};
+
 function generateStops() {
     allOptions = "";
     for (var key in stationCodes) {
@@ -96,11 +106,12 @@ function generateStopsOptions(lineName, stopNum, stopName) {
 }
 
 function clearFares(row) {
-    if (calcBools[row - 1] != 0) {
-        document.getElementById("farePerRound" + row).innerHTML = " ";
-        document.getElementById("itemCost" + row).innerHTML = " ";
-        calcBools[row - 1] = 0;
-    };
+    document.getElementById("farePerRound" + row).innerHTML = " ";
+    document.getElementById("itemCost" + row).innerHTML = " ";
+    document.getElementById("trips").innerHTML = "累計搭乘次數：";
+    document.getElementById("ovlCost").innerHTML = "總花費：";
+    document.getElementById("msg").innerHTML = "1280定期票";
+    calcBools[row - 1] = 0;
 }
 
 //parse fare api json
@@ -118,13 +129,21 @@ async function calcFares(cid) { //return the number of trips for that row
     var freq = document.getElementById("freqUser" + rowNum).value;
     var round = document.getElementById("roundUser" + rowNum).checked;
     var type = document.getElementById("typeUser" + rowNum).value;
-    var farePer;
+    var factor = 0;
+    var farePer = 0;
     var fareName = "Adult_Full_Fare";
     sind = allstops.indexOf(sloc);
     eind = allstops.indexOf(eloc);
     if ((sind === -1) | (eind === -1)) {
         alert("請在第" + rowNum + "行選擇起訖站和終點站");
+        calcBools[rowNum - 1] = -2;
         return (-1, 0);
+    } else if ((sloc === eloc) | (sameStops[sloc] === eloc) | (sameStops[eloc] === sloc)) {
+        alert("第" + rowNum + "行之起訖站和終點站一致，車資及搭乘次數將以0計算，請確認輸入無誤");
+        document.getElementById("farePerRound" + rowNum).innerHTML = "$ " + 0;
+        document.getElementById("itemCost" + rowNum).innerHTML = "$ " + 0;
+        calcBools[rowNum - 1] = -1;
+        return (0, 0);
     };
     if (type === "taipeichild") {
         fareName = "Taipei_City_Children";
@@ -136,13 +155,7 @@ async function calcFares(cid) { //return the number of trips for that row
         getAPIResults(sloc, eloc).then(jsonfares => {
             jsf = JSON.parse(jsonfares);
             farePer = parseInt(jsf["Fare"][fareName]);
-            var factor = 1;
-            if ((sloc === eloc) | (farePer === 0)) {
-                alert("第" + rowNum + "行之起訖站和終點站一致，車資及搭乘次數將以0計算，請確認輸入無誤");
-                document.getElementById("farePerRound" + rowNum).innerHTML = "$ " + farePer;
-                document.getElementById("itemCost" + rowNum).innerHTML = "$ " + (farePer * factor);
-                return (0, 0);
-            };
+            factor = 1;
             document.getElementById("farePerRound" + rowNum).innerHTML = "$ " + farePer;
             if (freq[1] == "w") {
                 factor = 4;
@@ -155,24 +168,44 @@ async function calcFares(cid) { //return the number of trips for that row
             calcBools[rowNum - 1] = 1;
             return resolve([factor, farePer]);
         });
-    });
+    });  
 }
 async function calcTotal() {
     var i; //counter
     var tfare = 0;
     var tfactor = 0;
     var savings = 0;
+    var eachFactor = 0;
+    var eachFarePer = 0;
+    var itemCost = 0;
     for (i = 1; i < curRow; i++) {
-        var idtoCall = "calcFares" + i;
-        var calced = await calcFares(idtoCall);
-        eachFactor = calced[0]
-        eachFarePer = calced[1];
-        if (eachFactor === -1) {
-            alert("加總前請確認所有旅程皆已填寫完成");
+        var status = calcBools[i - 1];
+        if (status === -2) { // left stops empty
+            alert("請在第" + i + "行選擇起訖站和終點站");
             document.getElementById("trips").innerHTML = "累計搭乘次數：";
             document.getElementById("ovlCost").innerHTML = "總花費：";
             document.getElementById("msg").innerHTML = "1280定期票";
-            return;
+            eachFactor = 0;
+            eachFarePer = 0;
+        } else if (status === -1) { // same stop entry
+            alert("第" + rowNum + "行之起訖站和終點站一致，車資及搭乘次數將以0計算，請確認輸入無誤");
+            document.getElementById("farePerRound" + rowNum).innerHTML = "$ " + 0;
+            document.getElementById("itemCost" + rowNum).innerHTML = "$ " + 0;
+            eachFactor = 0;
+            eachFarePer = 0;
+        } else if (status === 0) { // not calculated yet
+            var idtoCall = "calcFares" + i;
+            var calced = await calcFares(idtoCall);
+            eachFactor = calced[0];
+            eachFarePer = calced[1];
+            if (isNaN(eachFactor)) {
+                eachFactor = 0;
+                eachFarePer = 0;
+            };
+        } else { // already calculated and did not change entry
+            eachFarePer = document.getElementById("farePerRound" + i).innerHTML.slice(2,);
+            itemCost = document.getElementById("itemCost" + i).innerHTML.slice(2,);
+            eachFactor = itemCost / eachFarePer;
         };
         tfactor += eachFactor;
         tfare += eachFactor * eachFarePer;
@@ -181,17 +214,21 @@ async function calcTotal() {
     discountFactor = applyDiscount(tfactor);
     if (discountFactor === 0) {
         document.getElementById("ovlCost").innerHTML = '未達扣除<a href="https://www.metro.taipei/cp.aspx?n=AB56163F79ECB2C2" target="_blank">回饋金</a>之門檻，總花費： $ ' + tfare;
-    } else {
+    }
+    else {
         savings = Math.round(tfare * discountFactor);
         tfare = Math.round(tfare * (1 - discountFactor));
         document.getElementById("ovlCost").innerHTML = '扣除 $ ' + savings + '之<a href="https://www.metro.taipei/cp.aspx?n=AB56163F79ECB2C2" target="_blank">回饋金</a>後，總花費： $ ' + tfare;
-    }
+    };
     if (tfare >= 1180) {
         document.getElementById("msg").innerHTML = "1280定期票值得考慮！";
     }
+    else if (tfare <= 500) {
+        document.getElementById("msg").innerHTML = "你可以省下花1280定期票的錢，下個月再說！";
+    }
     else {
         document.getElementById("msg").innerHTML = "1280定期票似乎不太划算！";
-    }
+    };
 }
 
 function applyDiscount(numTrips) {
@@ -231,7 +268,7 @@ function addTrip() {
     cell7.innerHTML = '<p id="farePerRound' + curRow + '"></p>';
     cell8.innerHTML = '<p id="itemCost' + curRow + '"></p>';
     curRow += 1;
-    calcBools.push(0);
+    calcBools.push(-2);
 }
 
 function delTrip() {
