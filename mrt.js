@@ -20,33 +20,33 @@ var allstops = ["BR01", "BR02", "BR03", "BR04", "BR05", "BR06", "BR07", "BR08", 
     "Y15", "Y16", "Y17", "Y18", "Y19", "Y20"];
 
 var stationCodes = {
-    'BR01': '動物園', 'BR02': '木柵', 'BR03': '萬芳社區', 'BR04': '萬芳醫院',
+    'BRL': '文湖線', 'BR01': '動物園', 'BR02': '木柵', 'BR03': '萬芳社區', 'BR04': '萬芳醫院',
     'BR05': '辛亥', 'BR06': '麟光', 'BR07': '六張犁', 'BR08': '科技大樓', 'BR09': '大安',
     'BR10': '忠孝復興', 'BR11': '南京復興', 'BR12': '中山國中', 'BR13': '松山機場', 'BR14': '大直',
     'BR15': '劍南路', 'BR16': '西湖', 'BR17': '港墘', 'BR18': '文德', 'BR19': '內湖',
     'BR20': '大湖公園', 'BR21': '葫洲', 'BR22': '東湖', 'BR23': '南港軟體園區', 'BR24': '南港展覽館',
-    'R02': '象山', 'R03': '台北101/世貿', 'R04': '信義安和', 'R05': '大安', 'R06': '大安森林公園',
+    'RL': '淡水信義線','R02': '象山', 'R03': '台北101/世貿', 'R04': '信義安和', 'R05': '大安', 'R06': '大安森林公園',
     'R07': '東門', 'R08': '中正紀念堂', 'R09': '台大醫院', 'R10': '台北車站', 'R11': '中山',
     'R12': '雙連', 'R13': '民權西路', 'R14': '圓山', 'R15': '劍潭', 'R16': '士林',
     'R17': '芝山', 'R18': '明德', 'R19': '石牌', 'R20': '唭哩岸', 'R21': '奇岩',
     'R22': '北投', 'R22A': '新北投', 'R23': '復興崗', 'R24': '忠義', 'R25': '關渡',
     'R26': '竹圍', 'R27': '紅樹林', 'R28': '淡水',
-    'G01': '新店', 'G02': '新店區公所', 'G03': '七張', 'G03A': '小碧潭', 'G04': '大坪林',
+    'GL': '松山新店站','G01': '新店', 'G02': '新店區公所', 'G03': '七張', 'G03A': '小碧潭', 'G04': '大坪林',
     'G05': '景美', 'G06': '萬隆', 'G07': '公館', 'G08': '台電大樓', 'G09': '古亭',
     'G10': '中正紀念堂', 'G11': '小南門', 'G12': '西門', 'G13': '北門', 'G14': '中山',
     'G15': '松江南京', 'G16': '南京復興', 'G17': '台北小巨蛋', 'G18': '南京三民', 'G19': '松山',
-    'O01': '南勢角', 'O02': '景安', 'O03': '永安市場', 'O04': '頂溪', 'O05': '古亭',
+    'OL': '中和新蘆線','O01': '南勢角', 'O02': '景安', 'O03': '永安市場', 'O04': '頂溪', 'O05': '古亭',
     'O06': '東門', 'O07': '忠孝新生', 'O08': '松江南京', 'O09': '行天宮', 'O10': '中山國小',
     'O11': '民權西路', 'O12': '大橋頭', 'O13': '台北橋', 'O14': '菜寮', 'O15': '三重',
     'O16': '先嗇宮', 'O17': '頭前庄', 'O18': '新莊', 'O19': '輔大', 'O20': '丹鳳',
     'O21': '迴龍', 'O50': '三重國小', 'O51': '三和國中', 'O52': '徐匯中學', 'O53': '三民高中',
     'O54': '蘆洲',
-    'BL01': '頂埔', 'BL02': '永寧', 'BL03': '土城', 'BL04': '海山', 'BL05': '亞東醫院',
+    'BLL': '板南線','BL01': '頂埔', 'BL02': '永寧', 'BL03': '土城', 'BL04': '海山', 'BL05': '亞東醫院',
     'BL06': '府中', 'BL07': '板橋', 'BL08': '新埔', 'BL09': '江子翠', 'BL10': '龍山寺',
     'BL11': '西門', 'BL12': '台北車站', 'BL13': '善導寺', 'BL14': '忠孝新生', 'BL15': '忠孝復興',
     'BL16': '忠孝敦化', 'BL17': '國父紀念館', 'BL18': '市政府', 'BL19': '永春', 'BL20': '後山埤',
     'BL21': '昆陽', 'BL22': '南港', 'BL23': '南港展覽館',
-    'Y07': '大坪林', 'Y08': '十四張', 'Y09': '秀朗橋', 'Y10': '景平',
+    'YL': '環狀線','Y07': '大坪林', 'Y08': '十四張', 'Y09': '秀朗橋', 'Y10': '景平',
     'Y11': '景安', 'Y12': '中和', 'Y13': '橋和', 'Y14': '中原', 'Y15': '板新',
     'Y16': '板橋', 'Y17': '新埔民生', 'Y18': '頭前庄', 'Y19': '幸福', 'Y20': '新北產業園區'
 };
@@ -87,6 +87,13 @@ var sameStops = {
 function generateStops() {
     allOptions = "";
     for (var key in stationCodes) {
+        // line header
+        if (key.slice(-1) == 'L') {
+            line = '<option class="' + key.slice(0, -1) + '" disabled>' + stationCodes[key] + '</option>';
+            allOptions += line;
+            continue;
+        }
+        // stops
         var bfiveName = stationCodes[key];
         if (isNaN(key.charAt(key.length - 1))) {
             key = key.slice(0, -1);
@@ -135,11 +142,11 @@ async function calcFares(cid) { //return the number of trips for that row
     sind = allstops.indexOf(sloc);
     eind = allstops.indexOf(eloc);
     if ((sind === -1) | (eind === -1)) {
-        alert("請在第" + rowNum + "行選擇起訖站和終點站");
+        alert("請在第" + rowNum + "行選擇起站和終點站");
         calcBools[rowNum - 1] = -2;
         return (-1, 0);
     } else if ((sloc === eloc) | (sameStops[sloc] === eloc) | (sameStops[eloc] === sloc)) {
-        alert("第" + rowNum + "行之起訖站和終點站一致，車資及搭乘次數將以0計算，請確認輸入無誤");
+        alert("第" + rowNum + "行之起站和終點站一致，車資及搭乘次數將以0計算，請確認輸入無誤");
         document.getElementById("farePerRound" + rowNum).innerHTML = "$ " + 0;
         document.getElementById("itemCost" + rowNum).innerHTML = "$ " + 0;
         calcBools[rowNum - 1] = -1;
@@ -181,14 +188,14 @@ async function calcTotal() {
     for (i = 1; i < curRow; i++) {
         var status = calcBools[i - 1];
         if (status === -2) { // left stops empty
-            alert("請在第" + i + "行選擇起訖站和終點站");
+            alert("請在第" + i + "行選擇起站和終點站");
             document.getElementById("trips").innerHTML = "累計搭乘次數：";
             document.getElementById("ovlCost").innerHTML = "總花費：";
             document.getElementById("msg").innerHTML = "1280定期票";
             eachFactor = 0;
             eachFarePer = 0;
         } else if (status === -1) { // same stop entry
-            alert("第" + rowNum + "行之起訖站和終點站一致，車資及搭乘次數將以0計算，請確認輸入無誤");
+            alert("第" + rowNum + "行之起站和終點站一致，車資及搭乘次數將以0計算，請確認輸入無誤");
             document.getElementById("farePerRound" + rowNum).innerHTML = "$ " + 0;
             document.getElementById("itemCost" + rowNum).innerHTML = "$ " + 0;
             eachFactor = 0;
@@ -224,7 +231,7 @@ async function calcTotal() {
         document.getElementById("msg").innerHTML = "1280定期票值得考慮！";
     }
     else if (tfare <= 500) {
-        document.getElementById("msg").innerHTML = "你可以省下花1280定期票的錢，下個月再說！";
+        document.getElementById("msg").innerHTML = "你可以省下花1280定期票的錢下個月再說！";
     }
     else {
         document.getElementById("msg").innerHTML = "1280定期票似乎不太划算！";
@@ -279,5 +286,17 @@ function delTrip() {
         document.getElementById("trips").innerHTML = "累計搭乘次數：";
         document.getElementById("ovlCost").innerHTML = "總花費：";
         document.getElementById("msg").innerHTML = "1280定期票";
+    }
+}
+
+function showItems() {
+    var btn = document.getElementById("showNotice");
+    var items = document.getElementById("items");
+    if (window.getComputedStyle(items, null).display === "none") {
+        items.style.display = "block";
+        btn.innerText = "注意事項 - 縮小";
+    } else {
+        items.style.display = "none";
+        btn.innerText = "注意事項 - 檢視";
     }
 }
