@@ -17,6 +17,11 @@ h2 {
     text-align: center;
     color: darkslategrey;
 }
+
+/*Map*/
+#map {
+    margin-top: 20px;
+}
  
 /*Lines*/
 #lines {
@@ -25,11 +30,13 @@ h2 {
     width: 50%;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #lines button {
     margin-right: 3px;
     margin-bottom: 3px;
+    border-radius: 3px;
 }
 
 /*Table*/
@@ -48,22 +55,27 @@ td {
 }
 
 #tripControl{
-    width: 15%;
+    width: 50%;
+    text-align: center;
     margin: 0 auto;
 }
 
 #tripControl button {
-    border-width: 4px;
-    padding: 0px;
-    font-weight: bold;
+    border-width: 2px;
+    border-color: #dbdbdb;
     border-radius: 5px;
-    /*border: 2px solid #cccccc;*/
+    color: #2f403b;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    background-color: #b0d6cc;
 }
 
 .calcFares {
     margin-top: 2px;
     background-color: #97f0da;
-    color: #3d544e;
+    color: #2f403b;
     font-weight: bolder;
     font-size: 14px;
     height: 30px;
@@ -74,8 +86,8 @@ td {
 
 #calcTotal {
     margin-top: 2px;
-    background-color: #95cfac;
-    color: #3d544e;
+    background-color: #7febcd;
+    color: #2f403b;
     font-weight: bolder;
     font-size: 14px;
     height: 30px;
@@ -104,6 +116,22 @@ td {
 }
 
 /*Notice*/
+#showNotice {
+    border-width: 2px;
+    border-color: #dbdbdb;
+    border-radius: 5px;
+    color: #2f403b;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    background-color: #f28080;
+    font-size: 14px;
+}
+
+#items {
+    display: none;
+}
 
 ul {
     line-height: 220%;
@@ -111,11 +139,11 @@ ul {
 }
 
 li:hover {
-    background-color: #dbcad8;
+    background-color: #f0a1a1;
 }
 
 a:hover {
-    background-color:#6beef2 
+    background-color: #FFFF00;
 }
 
 /*#bottom {
@@ -249,7 +277,7 @@ option {
 
 .G {
     background-color: #008659;
-    border-color: #008659;
+    border-color: #2ea37c;
     color: #ffffff;
 }
 
@@ -275,6 +303,7 @@ select option[disabled] {
     margin-left: auto;
     margin-right: auto;
     opacity: 0.9;
+    font-size: 14px;
 }
 
 footer a {
