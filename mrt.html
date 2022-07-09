@@ -23,7 +23,7 @@
 				</li>
 				<li>此公式以<b>$1,180</b>為基準點來取得定期票是否值得考慮，但這個基準點因人而異，<b>請斟酌使用</b>。</li>
 				<li>本網站採用臺北市資料大平臺提供的<a href="https://data.taipei/dataset/detail?id=4acb4911-0360-4063-808d-fcee629508b3" target="_blank"><b>臺北捷運系統票價</b></a>以取得全票、敬老卡、愛心卡、愛心陪伴卡、新北市兒童優惠票價及臺北市兒童優惠票價。</li>
-				<li>若單一旅程中之起訖站和終點站一致，該列之單趟車資和單月車資在此皆已0元計算。但若同站進出超過15分鐘，將會扣除20元<a href="https://www.easycard.com.tw/use?cls=1506497567&id=1506500640#:~:text=%E4%BE%9D%E6%93%9A%E5%8F%B0%E5%8C%97%E5%A4%A7%E7%9C%BE%E6%8D%B7%E9%81%8B,20%E5%85%83%E9%80%BE%E6%99%82%E8%B2%BB%E3%80%82" target="_blank"><b>逾時費</b></a>。<b>此網站不考慮逾時的情況。</b></li>
+				<li>若單一旅程中之起站和終點站一致，該列之單趟車資和單月車資在此皆以0元計算。但若同站進出超過15分鐘，將會扣除20元<a href="https://www.easycard.com.tw/use?cls=1506497567&id=1506500640#:~:text=%E4%BE%9D%E6%93%9A%E5%8F%B0%E5%8C%97%E5%A4%A7%E7%9C%BE%E6%8D%B7%E9%81%8B,20%E5%85%83%E9%80%BE%E6%99%82%E8%B2%BB%E3%80%82" target="_blank"><b>逾時費</b></a>。<b>此網站不考慮逾時的情況。</b></li>
 				<li>此網站架設每個月有四週，即28天，<b>請斟酌使用</b>。</li>
 			</ul>
 
@@ -51,7 +51,7 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<th>起訖站</th>
+					<th>起站</th>
 					<th>終點站</th>
 					<th>頻率</th>
 					<th>來回</th>
@@ -67,6 +67,7 @@
 						<label for="startUser1"></label>
 						<select class="startUser" id="startUser1" onchange="clearFares(1)">
 							<option value="" selected disabled hidden>╴╴ 請選擇 ╴╴</option>
+							<option class="BR" disabled>文湖線</option>
 							<option class="BR" value="BR01">BR01 動物園</option>
 							<option class="BR" value="BR02">BR02 木柵</option>
 							<option class="BR" value="BR03">BR03 萬芳社區</option>
@@ -91,6 +92,7 @@
 							<option class="BR" value="BR22">BR22 東湖</option>
 							<option class="BR" value="BR23">BR23 南港軟體園區</option>
 							<option class="BR" value="BR24">BR24 南港展覽館</option>
+							<option class="R" disabled>淡水信義線</option>
 							<option class="R" value="R02">R02 象山</option>
 							<option class="R" value="R03">R03 台北101/世貿</option>
 							<option class="R" value="R04">R04 信義安和</option>
@@ -119,6 +121,7 @@
 							<option class="R" value="R26">R26 竹圍</option>
 							<option class="R" value="R27">R27 紅樹林</option>
 							<option class="R" value="R28">R28 淡水</option>
+							<option class="G" disabled>松山新店線</option>
 							<option class="G" value="G01">G01 新店</option>
 							<option class="G" value="G02">G02 新店區公所</option>
 							<option class="G" value="G03">G03 七張</option>
@@ -139,6 +142,7 @@
 							<option class="G" value="G17">G17 台北小巨蛋</option>
 							<option class="G" value="G18">G18 南京三民</option>
 							<option class="G" value="G19">G19 松山</option>
+							<option class="O" disabled>中和新蘆線</option>
 							<option class="O" value="O01">O01 南勢角</option>
 							<option class="O" value="O02">O02 景安</option>
 							<option class="O" value="O03">O03 永安市場</option>
@@ -165,6 +169,7 @@
 							<option class="O" value="O52">O52 徐匯中學</option>
 							<option class="O" value="O53">O53 三民高中</option>
 							<option class="O" value="O54">O54 蘆洲</option>
+							<option class="BL" disabled>板南線</option>
 							<option class="BL" value="BL01">BL01 頂埔</option>
 							<option class="BL" value="BL02">BL02 永寧</option>
 							<option class="BL" value="BL03">BL03 土城</option>
@@ -187,6 +192,7 @@
 							<option class="BL" value="BL21">BL21 昆陽</option>
 							<option class="BL" value="BL22">BL22 南港</option>
 							<option class="BL" value="BL23">BL23 南港展覽館</option>
+							<option class="Y" disabled>環狀線</option>
 							<option class="Y" value="Y07">Y07 大坪林</option>
 							<option class="Y" value="Y08">Y08 十四張</option>
 							<option class="Y" value="Y09">Y09 秀朗橋</option>
@@ -207,6 +213,7 @@
 						<label for="endUser1"></label>
 						<select class="endUser" id="endUser1" onchange="clearFares(1)">
 							<option value="" selected disabled hidden>╴╴ 請選擇 ╴╴</option>
+							<option class="BR" disabled>文湖線</option>
 							<option class="BR" value="BR01">BR01 動物園</option>
 							<option class="BR" value="BR02">BR02 木柵</option>
 							<option class="BR" value="BR03">BR03 萬芳社區</option>
@@ -231,6 +238,7 @@
 							<option class="BR" value="BR22">BR22 東湖</option>
 							<option class="BR" value="BR23">BR23 南港軟體園區</option>
 							<option class="BR" value="BR24">BR24 南港展覽館</option>
+							<option class="R" disabled>淡水信義線</option>
 							<option class="R" value="R02">R02 象山</option>
 							<option class="R" value="R03">R03 台北101/世貿</option>
 							<option class="R" value="R04">R04 信義安和</option>
@@ -259,6 +267,7 @@
 							<option class="R" value="R26">R26 竹圍</option>
 							<option class="R" value="R27">R27 紅樹林</option>
 							<option class="R" value="R28">R28 淡水</option>
+							<option class="G" disabled>松山新店線</option>
 							<option class="G" value="G01">G01 新店</option>
 							<option class="G" value="G02">G02 新店區公所</option>
 							<option class="G" value="G03">G03 七張</option>
@@ -279,6 +288,7 @@
 							<option class="G" value="G17">G17 台北小巨蛋</option>
 							<option class="G" value="G18">G18 南京三民</option>
 							<option class="G" value="G19">G19 松山</option>
+							<option class="O" disabled>中和新蘆線</option>
 							<option class="O" value="O01">O01 南勢角</option>
 							<option class="O" value="O02">O02 景安</option>
 							<option class="O" value="O03">O03 永安市場</option>
@@ -305,6 +315,7 @@
 							<option class="O" value="O52">O52 徐匯中學</option>
 							<option class="O" value="O53">O53 三民高中</option>
 							<option class="O" value="O54">O54 蘆洲</option>
+							<option class="BL" disabled>板南線</option>
 							<option class="BL" value="BL01">BL01 頂埔</option>
 							<option class="BL" value="BL02">BL02 永寧</option>
 							<option class="BL" value="BL03">BL03 土城</option>
@@ -327,6 +338,7 @@
 							<option class="BL" value="BL21">BL21 昆陽</option>
 							<option class="BL" value="BL22">BL22 南港</option>
 							<option class="BL" value="BL23">BL23 南港展覽館</option>
+							<option class="Y" disabled>環狀線</option>
 							<option class="Y" value="Y07">Y07 大坪林</option>
 							<option class="Y" value="Y08">Y08 十四張</option>
 							<option class="Y" value="Y09">Y09 秀朗橋</option>
