@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <title>臺北捷運定期票評估</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="臺北捷運定期票評估" />
+    <meta name="author" content="Grace Chiu" />
+    <link href="mrt.css" rel="stylesheet">
+    <script type="text/javascript" src="mrt.js" charset="utf-8" defer></script>
+</head>
+
+<body onload="generateStops()">
+    <div id="container">
+        <h2>臺北捷運定期票評估</h2>
+
+        <div id="notice">
+            <button onclick="showItems()">注意事項</button>
+            <div id="items">
+                <ul>
+                    <li>
+                        根據<a href="https://www.metro.taipei/cp.aspx?n=CEF54168B23F73B4&s=BB3631329CC1A297" target="_blank">官網</a>，1280定期票可在購買期限內可不限次數搭乘於票卡有效期間內可不限次數搭乘臺北捷運、淡海輕軌、臺北市聯營公車及新北市市區公車（僅限段次計費路線，不含里程收費公車），
+                        並可享臺北市及新北市YouBike站點借車前30分鐘免費優惠(須先註冊)，每次搭乘限一人使用。此工具僅考慮臺北捷運之使用來計算划算度，<b>請斟酌使用</b>。
+                    </li>
+                    <li>此公式以<b>$1,180</b>為基準點來取得定期票是否值得考慮，但這個基準點因人而異，<b>請斟酌使用</b>。</li>
+                    <li>本網站採用臺北市資料大平臺提供的<a href="https://data.taipei/dataset/detail?id=4acb4911-0360-4063-808d-fcee629508b3" target="_blank"><b>臺北捷運系統票價</b></a>以取得全票、敬老卡、愛心卡、愛心陪伴卡、新北市兒童優惠票價及臺北市兒童優惠票價。</li>
+                    <li>若單一旅程中之起站和終點站一致，該列之單趟車資和單月車資在此皆以0元計算。但若同站進出超過15分鐘，將會扣除20元<a href="https://www.easycard.com.tw/use?cls=1506497567&id=1506500640#:~:text=%E4%BE%9D%E6%93%9A%E5%8F%B0%E5%8C%97%E5%A4%A7%E7%9C%BE%E6%8D%B7%E9%81%8B,20%E5%85%83%E9%80%BE%E6%99%82%E8%B2%BB%E3%80%82" target="_blank"><b>逾時費</b></a>。<b>此網站不考慮逾時的情況。</b></li>
+                    <li>此網站架設每個月有四週，即28天，<b>請斟酌使用</b>。</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="https://www.metro.taipei/cp.aspx?n=91974F2B13D997F1" target="_blank">臺北捷運官網地圖</a>
+
+        <div id="lines">
+            <button class="BR" disabled>文湖線</button>
+            <button class="R" disabled>淡水信義線</button>
+            <button class="G" disabled>松山新店站</button>
+            <button class="O" disabled>中和新蘆線</button>
+            <button class="BL" disabled>板南線</button>
+            <button class="Y" disabled>環狀線</button>
+        </div>
+
+        <table id="dt" style="width: 100%">
+            <colgroup>
+                <col span="1" style="width: 15%" />
+                <col span="1" style="width: 15%" />
+                <col span="1" style="width: 10%" />
+                <col span="1" style="width: 10%" />
+                <col span="1" style="width: 10%" />
+                <col span="1" style="width: 10%" />
+                <col span="1" style="width: 10%" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>起站</th>
+                    <th>終點站</th>
+                    <th>頻率</th>
+                    <th>來回</th>
+                    <th>票種</th>
+                    <th>計算</th>
+                    <th>單趟車資</th>
+                    <th>單月車資</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="startUser1"></label>
+                        <select class="startUser" id="startUser1" onchange="clearFares(1)">
+                            <option value="" selected disabled hidden>╴╴ 請選擇 ╴╴</option>
+                            <option class="BR" disabled>文湖線</option>
+                            <option class="BR" value="BR01">BR01 動物園</option>
+                            <option class="BR" value="BR02">BR02 木柵</option>
+                            <option class="BR" value="BR03">BR03 萬芳社區</option>
+                            <option class="BR" value="BR04">BR04 萬芳醫院</option>
+                            <option class="BR" value="BR05">BR05 辛亥</option>
+                            <option class="BR" value="BR06">BR06 麟光</option>
+                            <option class="BR" value="BR07">BR07 六張犁</option>
+                            <option class="BR" value="BR08">BR08 科技大樓</option>
+                            <option class="BR" value="BR09">BR09 大安</option>
+                            <option class="BR" value="BR10">BR10 忠孝復興</option>
+                            <option class="BR" value="BR11">BR11 南京復興</option>
+                            <option class="BR" value="BR12">BR12 中山國中</option>
+                            <option class="BR" value="BR13">BR13 松山機場</option>
+                            <option class="BR" value="BR14">BR14 大直</option>
+                            <option class="BR" value="BR15">BR15 劍南路</option>
+                            <option class="BR" value="BR16">BR16 西湖</option>
+                            <option class="BR" value="BR17">BR17 港墘</option>
+                            <option class="BR" value="BR18">BR18 文德</option>
+                            <option class="BR" value="BR19">BR19 內湖</option>
+                            <option class="BR" value="BR20">BR20 大湖公園</option>
+                            <option class="BR" value="BR21">BR21 葫洲</option>
+                            <option class="BR" value="BR22">BR22 東湖</option>
+                            <option class="BR" value="BR23">BR23 南港軟體園區</option>
+                            <option class="BR" value="BR24">BR24 南港展覽館</option>
+                            <option class="R" disabled>淡水信義線</option>
+                            <option class="R" value="R02">R02 象山</option>
+                            <option class="R" value="R03">R03 台北101/世貿</option>
+                            <option class="R" value="R04">R04 信義安和</option>
+                            <option class="R" value="R05">R05 大安</option>
+                            <option class="R" value="R06">R06 大安森林公園</option>
+                            <option class="R" value="R07">R07 東門</option>
+                            <option class="R" value="R08">R08 中正紀念堂</option>
+                            <option class="R" value="R09">R09 台大醫院</option>
+                            <option class="R" value="R10">R10 台北車站</option>
+                            <option class="R" value="R11">R11 中山</option>
+                            <option class="R" value="R12">R12 雙連</option>
+                            <option class="R" value="R13">R13 民權西路</option>
+                            <option class="R" value="R14">R14 圓山</option>
+                            <option class="R" value="R15">R15 劍潭</option>
+                            <option class="R" value="R16">R16 士林</option>
+                            <option class="R" value="R17">R17 芝山</option>
+                            <option class="R" value="R18">R18 明德</option>
+                            <option class="R" value="R19">R19 石牌</option>
+                            <option class="R" value="R20">R20 唭哩岸</option>
+                            <option class="R" value="R21">R21 奇岩</option>
+                            <option class="R" value="R22">R22 北投</option>
+                            <option class="R" value="R22A">R22A 新北投</option>
+                            <option class="R" value="R23">R23 復興崗</option>
+                            <option class="R" value="R24">R24 忠義</option>
+                            <option class="R" value="R25">R25 關渡</option>
+                            <option class="R" value="R26">R26 竹圍</option>
+                            <option class="R" value="R27">R27 紅樹林</option>
+                            <option class="R" value="R28">R28 淡水</option>
+                            <option class="G" disabled>松山新店線</option>
+                            <option class="G" value="G01">G01 新店</option>
+                            <option class="G" value="G02">G02 新店區公所</option>
+                            <option class="G" value="G03">G03 七張</option>
+                            <option class="G" value="G03A">G03A 小碧潭</option>
+                            <option class="G" value="G04">G04 大坪林</option>
+                            <option class="G" value="G05">G05 景美</option>
+                            <option class="G" value="G06">G06 萬隆</option>
+                            <option class="G" value="G07">G07 公館</option>
+                            <option class="G" value="G08">G08 台電大樓</option>
+                            <option class="G" value="G09">G09 古亭</option>
+                            <option class="G" value="G10">G10 中正紀念堂</option>
+                            <option class="G" value="G11">G11 小南門</option>
+                            <option class="G" value="G12">G12 西門</option>
+                            <option class="G" value="G13">G13 北門</option>
+                            <option class="G" value="G14">G14 中山</option>
+                            <option class="G" value="G15">G15 松江南京</option>
+                            <option class="G" value="G16">G16 南京復興</option>
+                            <option class="G" value="G17">G17 台北小巨蛋</option>
+                            <option class="G" value="G18">G18 南京三民</option>
+                            <option class="G" value="G19">G19 松山</option>
+                            <option class="O" disabled>中和新蘆線</option>
+                            <option class="O" value="O01">O01 南勢角</option>
+                            <option class="O" value="O02">O02 景安</option>
+                            <option class="O" value="O03">O03 永安市場</option>
+                            <option class="O" value="O04">O04 頂溪</option>
+                            <option class="O" value="O05">O05 古亭</option>
+                            <option class="O" value="O06">O06 東門</option>
+                            <option class="O" value="O07">O07 忠孝新生</option>
+                            <option class="O" value="O08">O08 松江南京</option>
+                            <option class="O" value="O09">O09 行天宮</option>
+                            <option class="O" value="O10">O10 中山國小</option>
+                            <option class="O" value="O11">O11 民權西路</option>
+                            <option class="O" value="O12">O12 大橋頭</option>
+                            <option class="O" value="O13">O13 台北橋</option>
+                            <option class="O" value="O14">O14 菜寮</option>
+                            <option class="O" value="O15">O15 三重</option>
+                            <option class="O" value="O16">O16 先嗇宮</option>
+                            <option class="O" value="O17">O17 頭前庄</option>
+                            <option class="O" value="O18">O18 新莊</option>
+                            <option class="O" value="O19">O19 輔大</option>
+                            <option class="O" value="O20">O20 丹鳳</option>
+                            <option class="O" value="O21">O21 迴龍</option>
+                            <option class="O" value="O50">O50 三重國小</option>
+                            <option class="O" value="O51">O51 三和國中</option>
+                            <option class="O" value="O52">O52 徐匯中學</option>
+                            <option class="O" value="O53">O53 三民高中</option>
+                            <option class="O" value="O54">O54 蘆洲</option>
+                            <option class="BL" disabled>板南線</option>
+                            <option class="BL" value="BL01">BL01 頂埔</option>
+                            <option class="BL" value="BL02">BL02 永寧</option>
+                            <option class="BL" value="BL03">BL03 土城</option>
+                            <option class="BL" value="BL04">BL04 海山</option>
+                            <option class="BL" value="BL05">BL05 亞東醫院</option>
+                            <option class="BL" value="BL06">BL06 府中</option>
+                            <option class="BL" value="BL07">BL07 板橋</option>
+                            <option class="BL" value="BL08">BL08 新埔</option>
+                            <option class="BL" value="BL09">BL09 江子翠</option>
+                            <option class="BL" value="BL10">BL10 龍山寺</option>
+                            <option class="BL" value="BL11">BL11 西門</option>
+                            <option class="BL" value="BL12">BL12 台北車站</option>
+                            <option class="BL" value="BL13">BL13 善導寺</option>
+                            <option class="BL" value="BL14">BL14 忠孝新生</option>
+                            <option class="BL" value="BL15">BL15 忠孝復興</option>
+                            <option class="BL" value="BL17">BL17 國父紀念館</option>
+                            <option class="BL" value="BL18">BL18 市政府</option>
+                            <option class="BL" value="BL19">BL19 永春</option>
+                            <option class="BL" value="BL20">BL20 後山埤</option>
+                            <option class="BL" value="BL21">BL21 昆陽</option>
+                            <option class="BL" value="BL22">BL22 南港</option>
+                            <option class="BL" value="BL23">BL23 南港展覽館</option>
+                            <option class="Y" disabled>環狀線</option>
+                            <option class="Y" value="Y07">Y07 大坪林</option>
+                            <option class="Y" value="Y08">Y08 十四張</option>
+                            <option class="Y" value="Y09">Y09 秀朗橋</option>
+                            <option class="Y" value="Y10">Y10 景平</option>
+                            <option class="Y" value="Y11">Y11 景安</option>
+                            <option class="Y" value="Y12">Y12 中和</option>
+                            <option class="Y" value="Y13">Y13 橋和</option>
+                            <option class="Y" value="Y14">Y14 中原</option>
+                            <option class="Y" value="Y15">Y15 板新</option>
+                            <option class="Y" value="Y16">Y16 板橋</option>
+                            <option class="Y" value="Y17">Y17 新埔民生</option>
+                            <option class="Y" value="Y18">Y18 頭前庄</option>
+                            <option class="Y" value="Y19">Y19 幸福</option>
+                            <option class="Y" value="Y20">Y20 新北產業園區</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="endUser1"></label>
+                        <select class="endUser" id="endUser1" onchange="clearFares(1)">
+                            <option value="" selected disabled hidden>╴╴ 請選擇 ╴╴</option>
+                            <option class="BR" disabled>文湖線</option>
+                            <option class="BR" value="BR01">BR01 動物園</option>
+                            <option class="BR" value="BR02">BR02 木柵</option>
+                            <option class="BR" value="BR03">BR03 萬芳社區</option>
+                            <option class="BR" value="BR04">BR04 萬芳醫院</option>
+                            <option class="BR" value="BR05">BR05 辛亥</option>
+                            <option class="BR" value="BR06">BR06 麟光</option>
+                            <option class="BR" value="BR07">BR07 六張犁</option>
+                            <option class="BR" value="BR08">BR08 科技大樓</option>
+                            <option class="BR" value="BR09">BR09 大安</option>
+                            <option class="BR" value="BR10">BR10 忠孝復興</option>
+                            <option class="BR" value="BR11">BR11 南京復興</option>
+                            <option class="BR" value="BR12">BR12 中山國中</option>
+                            <option class="BR" value="BR13">BR13 松山機場</option>
+                            <option class="BR" value="BR14">BR14 大直</option>
+                            <option class="BR" value="BR15">BR15 劍南路</option>
+                            <option class="BR" value="BR16">BR16 西湖</option>
+                            <option class="BR" value="BR17">BR17 港墘</option>
+                            <option class="BR" value="BR18">BR18 文德</option>
+                            <option class="BR" value="BR19">BR19 內湖</option>
+                            <option class="BR" value="BR20">BR20 大湖公園</option>
+                            <option class="BR" value="BR21">BR21 葫洲</option>
+                            <option class="BR" value="BR22">BR22 東湖</option>
+                            <option class="BR" value="BR23">BR23 南港軟體園區</option>
+                            <option class="BR" value="BR24">BR24 南港展覽館</option>
+                            <option class="R" disabled>淡水信義線</option>
+                            <option class="R" value="R02">R02 象山</option>
+                            <option class="R" value="R03">R03 台北101/世貿</option>
+                            <option class="R" value="R04">R04 信義安和</option>
+                            <option class="R" value="R05">R05 大安</option>
+                            <option class="R" value="R06">R06 大安森林公園</option>
+                            <option class="R" value="R07">R07 東門</option>
+                            <option class="R" value="R08">R08 中正紀念堂</option>
+                            <option class="R" value="R09">R09 台大醫院</option>
+                            <option class="R" value="R10">R10 台北車站</option>
+                            <option class="R" value="R11">R11 中山</option>
+                            <option class="R" value="R12">R12 雙連</option>
+                            <option class="R" value="R13">R13 民權西路</option>
+                            <option class="R" value="R14">R14 圓山</option>
+                            <option class="R" value="R15">R15 劍潭</option>
+                            <option class="R" value="R16">R16 士林</option>
+                            <option class="R" value="R17">R17 芝山</option>
+                            <option class="R" value="R18">R18 明德</option>
+                            <option class="R" value="R19">R19 石牌</option>
+                            <option class="R" value="R20">R20 唭哩岸</option>
+                            <option class="R" value="R21">R21 奇岩</option>
+                            <option class="R" value="R22">R22 北投</option>
+                            <option class="R" value="R22A">R22A 新北投</option>
+                            <option class="R" value="R23">R23 復興崗</option>
+                            <option class="R" value="R24">R24 忠義</option>
+                            <option class="R" value="R25">R25 關渡</option>
+                            <option class="R" value="R26">R26 竹圍</option>
+                            <option class="R" value="R27">R27 紅樹林</option>
+                            <option class="R" value="R28">R28 淡水</option>
+                            <option class="G" disabled>松山新店線</option>
+                            <option class="G" value="G01">G01 新店</option>
+                            <option class="G" value="G02">G02 新店區公所</option>
+                            <option class="G" value="G03">G03 七張</option>
+                            <option class="G" value="G03A">G03A 小碧潭</option>
+                            <option class="G" value="G04">G04 大坪林</option>
+                            <option class="G" value="G05">G05 景美</option>
+                            <option class="G" value="G06">G06 萬隆</option>
+                            <option class="G" value="G07">G07 公館</option>
+                            <option class="G" value="G08">G08 台電大樓</option>
+                            <option class="G" value="G09">G09 古亭</option>
+                            <option class="G" value="G10">G10 中正紀念堂</option>
+                            <option class="G" value="G11">G11 小南門</option>
+                            <option class="G" value="G12">G12 西門</option>
+                            <option class="G" value="G13">G13 北門</option>
+                            <option class="G" value="G14">G14 中山</option>
+                            <option class="G" value="G15">G15 松江南京</option>
+                            <option class="G" value="G16">G16 南京復興</option>
+                            <option class="G" value="G17">G17 台北小巨蛋</option>
+                            <option class="G" value="G18">G18 南京三民</option>
+                            <option class="G" value="G19">G19 松山</option>
+                            <option class="O" disabled>中和新蘆線</option>
+                            <option class="O" value="O01">O01 南勢角</option>
+                            <option class="O" value="O02">O02 景安</option>
+                            <option class="O" value="O03">O03 永安市場</option>
+                            <option class="O" value="O04">O04 頂溪</option>
+                            <option class="O" value="O05">O05 古亭</option>
+                            <option class="O" value="O06">O06 東門</option>
+                            <option class="O" value="O07">O07 忠孝新生</option>
+                            <option class="O" value="O08">O08 松江南京</option>
+                            <option class="O" value="O09">O09 行天宮</option>
+                            <option class="O" value="O10">O10 中山國小</option>
+                            <option class="O" value="O11">O11 民權西路</option>
+                            <option class="O" value="O12">O12 大橋頭</option>
+                            <option class="O" value="O13">O13 台北橋</option>
+                            <option class="O" value="O14">O14 菜寮</option>
+                            <option class="O" value="O15">O15 三重</option>
+                            <option class="O" value="O16">O16 先嗇宮</option>
+                            <option class="O" value="O17">O17 頭前庄</option>
+                            <option class="O" value="O18">O18 新莊</option>
+                            <option class="O" value="O19">O19 輔大</option>
+                            <option class="O" value="O20">O20 丹鳳</option>
+                            <option class="O" value="O21">O21 迴龍</option>
+                            <option class="O" value="O50">O50 三重國小</option>
+                            <option class="O" value="O51">O51 三和國中</option>
+                            <option class="O" value="O52">O52 徐匯中學</option>
+                            <option class="O" value="O53">O53 三民高中</option>
+                            <option class="O" value="O54">O54 蘆洲</option>
+                            <option class="BL" disabled>板南線</option>
+                            <option class="BL" value="BL01">BL01 頂埔</option>
+                            <option class="BL" value="BL02">BL02 永寧</option>
+                            <option class="BL" value="BL03">BL03 土城</option>
+                            <option class="BL" value="BL04">BL04 海山</option>
+                            <option class="BL" value="BL05">BL05 亞東醫院</option>
+                            <option class="BL" value="BL06">BL06 府中</option>
+                            <option class="BL" value="BL07">BL07 板橋</option>
+                            <option class="BL" value="BL08">BL08 新埔</option>
+                            <option class="BL" value="BL09">BL09 江子翠</option>
+                            <option class="BL" value="BL10">BL10 龍山寺</option>
+                            <option class="BL" value="BL11">BL11 西門</option>
+                            <option class="BL" value="BL12">BL12 台北車站</option>
+                            <option class="BL" value="BL13">BL13 善導寺</option>
+                            <option class="BL" value="BL14">BL14 忠孝新生</option>
+                            <option class="BL" value="BL15">BL15 忠孝復興</option>
+                            <option class="BL" value="BL17">BL17 國父紀念館</option>
+                            <option class="BL" value="BL18">BL18 市政府</option>
+                            <option class="BL" value="BL19">BL19 永春</option>
+                            <option class="BL" value="BL20">BL20 後山埤</option>
+                            <option class="BL" value="BL21">BL21 昆陽</option>
+                            <option class="BL" value="BL22">BL22 南港</option>
+                            <option class="BL" value="BL23">BL23 南港展覽館</option>
+                            <option class="Y" disabled>環狀線</option>
+                            <option class="Y" value="Y07">Y07 大坪林</option>
+                            <option class="Y" value="Y08">Y08 十四張</option>
+                            <option class="Y" value="Y09">Y09 秀朗橋</option>
+                            <option class="Y" value="Y10">Y10 景平</option>
+                            <option class="Y" value="Y11">Y11 景安</option>
+                            <option class="Y" value="Y12">Y12 中和</option>
+                            <option class="Y" value="Y13">Y13 橋和</option>
+                            <option class="Y" value="Y14">Y14 中原</option>
+                            <option class="Y" value="Y15">Y15 板新</option>
+                            <option class="Y" value="Y16">Y16 板橋</option>
+                            <option class="Y" value="Y17">Y17 新埔民生</option>
+                            <option class="Y" value="Y18">Y18 頭前庄</option>
+                            <option class="Y" value="Y19">Y19 幸福</option>
+                            <option class="Y" value="Y20">Y20 新北產業園區</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="freqUser1"></label>
+                        <select class="freqUser" id="freqUser1" onchange="clearFares(1)">
+                            <option value="1m" class="monf">每月1次</option>
+                            <option value="2m" class="monf">每月2次</option>
+                            <option value="3m" class="monf">每月3次</option>
+                            <option value="4m" class="monf">每月4次</option>
+                            <option value="1w" class="weekf">每週1次</option>
+                            <option value="2w" class="weekf">每週2次</option>
+                            <option value="3w" class="weekf">每週3次</option>
+                            <option value="4w" class="weekf">每週4次</option>
+                            <option value="5w" class="weekf">每週5次</option>
+                            <option value="6w" class="weekf">每週6次</option>
+                            <option value="7w" class="weekf">每週7次</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="checkbox" class="roundUser" id="roundUser1" value="Yes" onclick="clearFares(1)" />
+                        <label for="roundUser1">是</label>
+                    </td>
+                    <td>
+                        <label for="typeUser1"></label>
+                        <select class="typeUser" id="typeUser1" onchange="clearFares(1)">
+                            <option value="adult" class="typef">全票</option>
+                            <option value="senior" class="types">敬老卡</option>
+                            <option value="charity" class="types">愛心卡</option>
+                            <option value="companion" class="types">愛心陪伴卡</option>
+                            <option value="newtaipeichild" class="types">新北市兒童優惠票</option>
+                            <option value="taipeichild" class="typet">臺北市兒童優惠票</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="calcUser1">
+                            <input type="button" value="小計" class="calcFares" id="calcUser1" onclick="calcFares(this.id)" />
+                        </label>
+                    </td>
+                    <td>
+                        <p class="leftFareD"></p><p class="rightFareD" id="farePerRound1"></p>
+                    </td>
+                    <td>
+                        <p class="leftCostD"></p><p class="rightCostD" id="itemCost1"></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <br />
+
+        <div id="tripControl">
+            <button onclick="addTrip()">增加旅程</button>
+            <button onclick="delTrip()">取消旅程</button>
+        </div>
+
+        <br />
+
+        <div id="bottom">
+            <div id="totalCalc">
+                <button id="calcTotal" onclick="calcTotal()">加總</button>
+            </div>
+
+            <div id="totalOutput">
+                <p id="trips">累計搭乘次數：</p>
+                <p id="ovlCost">總花費：</p>
+                <p id="msg">1280定期票</p>
+            </div>
+        </div>
+
+        <div id="footer">
+            <footer>
+                <p>&copy; Copyright 2022 Grace Chiu All Rights Reserved · <a href="https://github.com/GraziosoG/taipei-metro-fare">GitHub Repo</a> · <a href="mailto:grace.chiu25@utexas.edu">Contact</a></p>
+            </footer>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
