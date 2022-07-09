@@ -265,6 +265,10 @@ option {
     color: black;
 }
 
+select option[disabled] {
+    font-weight: bold;
+}
+
 /*Footer*/
 #footer {
     text-align: center;
