@@ -123,7 +123,7 @@ function clearFares(row) {
 
 //parse fare api json
 async function getAPIResults(dep, des) {
-    let jsonObj = await fetch("https://taipei-metro-fare-api.herokuapp.com/getTicketPrice/" + dep + "/" + des);
+    let jsonObj = await fetch("/https://pineapple-bun-service.herokuapp.com/getTicketPrice/" + dep + "/" + des);
     let text = await jsonObj.text();
     return text;
 }
