@@ -7,5 +7,5 @@
      - Senior, Charity, Companion and New Taipei City Children
      - Taipei City Children
 - This app is currently available in Mandarin. 
-- Try the app [here](https://graziosog.github.io/mrt/mrt.html).
+- Try the app [here](https://graziosog.github.io/taipei-metro-fare/mrt.html).
 - The previous version of this app stores only the adult full fare ticket prices and retrieves them without an API call. View repo [#taipei-metro](https://github.com/GraziosoG/taipei-metro).
